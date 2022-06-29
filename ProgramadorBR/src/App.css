@@ -1,0 +1,62 @@
+*{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px;
+    background-color: #3e3e3e;
+    color: white;
+}
+
+.navbar1{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px;
+    background-color: #ce6868;
+    color: white;
+}
+
+.menu{
+    display: flex;
+    
+}
+
+
+.menu li {
+    margin-left: 25px;
+    list-style: none;
+}
+
+.Contador{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.tarefa{
+    display: flex;
+    justify-content: space-between;
+    background-color: green;
+    border: 6px solid black;
+    width: 400px;
+}
+
+.inputPosition{
+    text-align: center;
+}
+
+.taskPosition{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+img{
+    width: 50px;
+    height: 50px;
+}
