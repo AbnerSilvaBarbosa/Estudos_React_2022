@@ -8,42 +8,58 @@ import Input from "./components/Input"
 
 function App() {
 
-
-  
+  //Estado que se inicia com um array vazio
   const [card, setCard] = useState([])
 
-
-  function doneTask(id){
+  //Função que altera a propriedade do objeto da tarefa especifica para true ou false
+  function doneTask(id) {
     let updatedItems = card.map(card => {
-      if(card.id === id){
-        
-        if(card.done === false){
+      if (card.id === id) {
+        if (card.done === false) {
           card.done = true
-        }else{
+        } else {
           card.done = false
         }
-
-        
       }
-
       return card
-      
     })
 
     setCard(updatedItems)
-    
-
-
+    console.log(card)
   }
- 
+
+  //Função que deleta a tarefa especifica
   function deleteTask(id) {
-    let filter = card.filter(card => card.id != id)
+    let filter = card.filter(card => card.id != id) //Filtrando todos os itens que não sejam o id passado
     setCard(filter)
   }
 
-  function setCardCalback(item){
-    setCard([...card,item])
+  //Callback que adiciona uma nova tarefa, vindo de outro componente filho
+  function setCardCalback(item) {
+    setCard([...card, item])
   }
+
+  useEffect(()=>{
+
+    async function setarValor(){
+      let valor = await JSON.parse(localStorage.getItem("card"))
+      
+      if(valor){
+
+        setCard(valor)
+        
+      }
+
+      
+    }
+    setarValor()
+    
+  },[])
+
+  useEffect(()=>{
+    localStorage.setItem("card",JSON.stringify(card))
+
+  },[card])
 
 
 
@@ -53,7 +69,7 @@ function App() {
 
       <Input setCardCalback={setCardCalback}></Input>
 
-      {card.map(tarefa => <Tarefa key={tarefa.id} tarefa={tarefa.name} delete={()=>{deleteTask(tarefa.id)}} done={()=>{doneTask(tarefa.id)}} card={tarefa.done}></Tarefa>)}
+      {card.map(tarefa => <Tarefa key={tarefa.id} tarefa={tarefa.name} delete={() => { deleteTask(tarefa.id) }} done={() => { doneTask(tarefa.id) }} card={tarefa.done}></Tarefa>)}
 
     </>
 

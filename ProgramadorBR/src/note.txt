@@ -1,6 +1,0 @@
-Componentes{
-
-    -Sempre começar com a letra maiuscula para facilidar localização e tipo do elementos
-}
-
--Misturar jsx com js com {}
